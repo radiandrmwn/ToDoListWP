@@ -211,7 +211,7 @@ input_frame.pack(fill="x", padx=10, pady=10)
 
 # Task Name
 tk.Label(input_frame, text="Task Name:").grid(row=0, column=0, sticky="w", padx=5, pady=5)
-task_entry = tk.Entry(input_frame, textvariable=task_var, width=40)
+task_entry = tk.Entry(input_frame, textvariable=task_var, width=50)
 task_entry.grid(row=0, column=1, padx=5, pady=5, columnspan=2, sticky="ew")
 
 # Priority
@@ -221,19 +221,22 @@ priority_combo = ttk.Combobox(input_frame, textvariable=priority_var, state="rea
                               width=15)
 priority_combo.grid(row=1, column=1, sticky="w", padx=5, pady=5)
 
-# Due Date
-tk.Label(input_frame, text="Due Date:").grid(row=1, column=2, sticky="w", padx=5, pady=5)
-due_date_entry = tk.Entry(input_frame, textvariable=due_date_var, width=15)
-due_date_entry.grid(row=1, column=3, sticky="w", padx=5, pady=5)
-tk.Label(input_frame, text="(YYYY-MM-DD)", fg="gray").grid(row=1, column=4, sticky="w")
+# Due Date with hint right next to it
+tk.Label(input_frame, text="Due Date:").grid(row=2, column=0, sticky="w", padx=5, pady=5)
+date_frame = tk.Frame(input_frame)
+date_frame.grid(row=2, column=1, sticky="w", padx=5, pady=5)
+due_date_entry = tk.Entry(date_frame, textvariable=due_date_var, width=20)
+due_date_entry.pack(side="left")
+tk.Label(date_frame, text="(YYYY-MM-DD)", fg="gray", font=("Arial", 8)).pack(side="left", padx=5)
 
-# Add Button
+# Add Button - Placed at the bottom right corner
 add_button = tk.Button(input_frame, text="Add Task (F1)", command=add_task,
                        bg="#4CAF50", fg="white", width=15)
-add_button.grid(row=2, column=1, pady=10)
+add_button.grid(row=3, column=2, pady=10, padx=5, sticky="e")
 
 # Configure column weights
 input_frame.columnconfigure(1, weight=1)
+input_frame.columnconfigure(2, weight=0)
 
 # ---------------- Middle Frame (Task List) ----------------
 list_frame = tk.LabelFrame(root, text="Task List", padx=10, pady=10)
@@ -253,7 +256,7 @@ button_frame = tk.Frame(root, padx=10, pady=10)
 button_frame.pack(fill="x")
 
 tk.Button(button_frame, text="Mark Complete/Incomplete", command=toggle_task_status,
-          bg="#2196F3", fg="white", width=20).pack(side="left", padx=5)
+          bg="#2196F3", fg="white", width=23).pack(side="left", padx=5)
 
 tk.Button(button_frame, text="Delete Selected (Del)", command=delete_task,
           bg="#f44336", fg="white", width=20).pack(side="left", padx=5)
