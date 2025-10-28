@@ -1,6 +1,8 @@
 # To-Do List Manager - Midterm Project Report
 
 ## Project Information
+**Name:** Radian Try Darmawan
+**Student ID:** 113021220
 **Project Title:** To-Do List Manager
 **Course:** Windows Programming
 **Semester:** 2nd Semester
